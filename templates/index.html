@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-color:powderblue;">
+ <div class="login">
+	<center>
+	<h1>Approval of Loan</h1>
+	</center>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="ApplicantIncome" placeholder="ApplicantIncome" required="required" />
+        <input type="text" name="CoapplicantIncome" placeholder="CoapplicantIncome" required="required" />
+		<input type="text" name="LoanAmount" placeholder="LoanAmount" required="required" />
+      <input type="text" name="Loan_Amount_Term" placeholder="Loan_Amount_Term" required="required" />
+      <input type="text" name="Credit_History" placeholder="Credit_History" required="required" />
+      <input type="text" name="Gender_Male" placeholder="Gender_Male" required="required" />
+      <input type="text" name="Married_Yes" placeholder="Married_Yes" required="required" />
+      <input type="text" name="Dependents_1" placeholder="Dependents_1" required="required" />
+      <input type="text" name="Dependents_2" placeholder="Dependents_2" required="required" />
+      <input type="text" name="Dependents_3+" placeholder="Dependents_3+" required="required" />
+      <input type="text" name="Education_Not Graduate" placeholder="Education_Not Graduate" required="required" />
+      <input type="text" name="Self_Employed_Yes" placeholder="Self_Employed_Yes" required="required" />
+      <input type="text" name="Property_Area_Semiurban" placeholder="Property_Area_Semiurban" required="required" />
+      <input type="text" name="Property_Area_Urban" placeholder="Property_Area_Urban" required="required" />
+      
+    <button type="submit" style="background-color:Blue;margin:25px 50px 75px 600px;;display:block">Submit</button>
+
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
