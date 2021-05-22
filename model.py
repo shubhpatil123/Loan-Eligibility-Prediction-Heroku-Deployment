@@ -7,8 +7,9 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import Imputer,StandardScaler
+#from sklearn.preprocessing import Imputer,StandardScaler
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 import pickle
 
 
@@ -50,15 +51,15 @@ y = loan_train_df_encoded['Loan_Status_Y']
 X=X.fillna(X.mean())
 
 # In[20]:
+logreg = LogisticRegression()
 
-
-rfc=RandomForestClassifier(random_state=42, max_features='auto', n_estimators= 60, max_depth=4, criterion='gini')
-
+#rfc=RandomForestClassifier(random_state=42, max_features='auto', n_estimators= 60, max_depth=4, criterion='gini')
+logreg.fit(X,y)
 
 # In[21]:
 
 
-rfc.fit(X,y)
+#rfc.fit()
 
 
 # In[22]:
@@ -66,7 +67,7 @@ rfc.fit(X,y)
 
 
 # Saving model to disk
-pickle.dump(rfc, open('model.pkl','wb'))
+pickle.dump(logreg, open('model.pkl','wb'))
 
 # Loading model to compare the results
 model = pickle.load(open('model.pkl','rb'))
